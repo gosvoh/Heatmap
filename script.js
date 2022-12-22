@@ -136,12 +136,9 @@ class Legend {
         this.context.font = "bold 18px Arial";
         this.context.textAlign = "center";
         this.context.textBaseline = "middle";
-        this.context.fillText(this.heatmap.minIntensity.toString(), this.context.canvas.width / 2, this.context.canvas.height - 10);
-        this.context.fillText(this.heatmap.maxIntensity.toString(), this.context.canvas.width / 2, 10);
-        for (let i = 0; i < 5; i++) {
-            if (i == 0)
-                continue;
-            let y = (this.context.canvas.height / 5) * i;
+        let textHeightBounds = (this.context.canvas.height - 20) / 5;
+        for (let i = 0; i <= 5; i++) {
+            let y = textHeightBounds * (5 - i) + 10;
             this.context.fillStyle = "white";
             this.context.fillText(this.heatmap.intensityAtPercent(i * 20).toString(), this.context.canvas.width / 2, y);
         }
